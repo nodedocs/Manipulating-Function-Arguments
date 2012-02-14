@@ -1,0 +1,12 @@
+{
+  "title": "What are the built-in timer functions?",
+  "description": "",
+  "date": "Fri Aug 26 2011 03:08:50 GMT-0700 (PST)",
+  "tags": ["truthy", "falsy", "types", "coersion"],
+  "authors": [
+    { "name": "Marco Rogers",
+      "url": "https://github.com/polotek"
+    }
+  ],
+  "difficulty":1
+}
