@@ -16,14 +16,16 @@ property of `arguments` is callee. This always refers to the function
 currently being executed. Here's an example that illustrates the
 properties of `arguments`.
 
-    var myfunc = function(one) {
-      arguments.callee === myfunc;
-      arguments[0] === one;
-      arguments[1] === 2;
-      arguments.length === 3;
-    }
+```javascript
+var myfunc = function(one) {
+  arguments.callee === myfunc;
+  arguments[0] === one;
+  arguments[1] === 2;
+  arguments.length === 3;
+}
 
-    myfunc(1, 2, 3);
+myfunc(1, 2, 3);
+```
 
 This construct is very useful and gives javascript functions a lot of
 flexibility. But there is an important gotcha. The `arguments` object
@@ -33,10 +35,12 @@ methods, e.g. `arguments.sort()` raises a TypeError. Instead you need to
 copy the values into a true array first. Since a normal for loop
 works, this is pretty easy.
 
-    var args = [];
-    for(var i = 0; i < arguments.length; i++) {
-      args.push(arguments[i]);
-    }
+```javascript
+var args = [];
+for(var i = 0; i < arguments.length; i++) {
+  args.push(arguments[i]);
+}
+```
 
 In certain cases you can still treat `arguments` as an array. You can
 use `arguments` in dynamic function invocations using apply. And most
@@ -44,13 +48,15 @@ native Array methods will also accept `arguments` when dynamically
 invoked using call or apply. This technique also suggests another way
 to convert `arguments` into a true array using the Array#slice method.
 
-    myfunc.apply(obj, arguments).
+```javascript
+myfunc.apply(obj, arguments).
 
-    // concat arguments onto the 
-    Array.prototype.concat.apply([1,2,3], arguments).
+// concat arguments onto the 
+Array.prototype.concat.apply([1,2,3], arguments).
 
-    // turn arguments into a true array
-    var args = Array.prototype.slice.call(arguments);
+// turn arguments into a true array
+var args = Array.prototype.slice.call(arguments);
 
-    // cut out first argument
-    args = Array.prototype.slice.call(arguments, 1);
+// cut out first argument
+args = Array.prototype.slice.call(arguments, 1);
+```
